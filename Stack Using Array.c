@@ -31,7 +31,7 @@ void peek(){
     }
 }
 
-void display(){
+void sanchit_display(){
     if(top == -1){
         printf("Stack is empty\n");
     } else {
@@ -64,7 +64,7 @@ int main(){
                 peek();
                 break;
             case 4:
-                display();
+                sanchit_display();
                 break;
             case 5:
                 return 0;
