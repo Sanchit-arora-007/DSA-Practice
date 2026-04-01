@@ -2,11 +2,11 @@
 #include <stdlib.h>
 
 struct Node {
-    int data;
+    char data;
     struct Node* left;
     struct Node* right;
 };
-struct Node* createNode(int value) {
+struct Node* createNode(char value) {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     newNode->data = value;
     newNode->left = NULL;
@@ -16,7 +16,7 @@ struct Node* createNode(int value) {
 
 void preorder(struct Node* root) {
     if (root != NULL) {
-        printf("%d ", root->data);
+        printf("%c ", root->data);
         preorder(root->left);
         preorder(root->right);
     }
@@ -24,7 +24,7 @@ void preorder(struct Node* root) {
 void inorder(struct Node* root) {
     if (root != NULL) {
         inorder(root->left);
-        printf("%d ", root->data);
+        printf("%c ", root->data);
         inorder(root->right);
     }
 }
@@ -32,18 +32,16 @@ void postorder(struct Node* root) {
     if (root != NULL) {
         postorder(root->left);
         postorder(root->right);
-        printf("%d ", root->data);
+        printf("%c ", root->data);
     }
 }
 
 int main() {
-    struct Node* root = createNode(1);
-    root->left = createNode(2);
-    root->right = createNode(3);
-    root->left->left = createNode(4);
-    root->left->right = createNode(5);
-    root->right->left = createNode(6);
-    root->right->right = createNode(7);
+    struct Node* root = createNode('A');
+    root->left = createNode('B');
+    root->right = createNode('C');
+    root->right->left = createNode('D');
+    root->right->left->left = createNode('E');
 
     printf("Preorder Traversal: ");
     preorder(root);
