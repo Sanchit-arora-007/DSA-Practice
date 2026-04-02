@@ -61,7 +61,7 @@ int main() {
     insert(root, 30);
     insert(root, 10);
     insert(root, 50);
-    insert(root, 90);
+    insert(root, 100);
     printf("Preorder Traversal: ");
     preorder(root);
     printf("\nInorder Traversal: ");
