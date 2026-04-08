@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 struct node {
-    int data;
+    int SAP;
     struct node* next;
 };
 
@@ -14,7 +14,7 @@ void sanchit_print(struct node* head) {
 
     struct node* temp = head;
     do {
-        printf("%d ", temp->data);
+        printf("%d ", temp->SAP);
         temp = temp->next;
     } while(temp != head);
 
@@ -23,7 +23,7 @@ void sanchit_print(struct node* head) {
 
 void sanchit_insert_at_beginning(struct node** head, int data) {
     struct node* new_node = (struct node*)malloc(sizeof(struct node));
-    new_node->data = data;
+    new_node->SAP = data;
 
     if(*head == NULL) {
         new_node->next = new_node;
@@ -42,7 +42,7 @@ void sanchit_insert_at_beginning(struct node** head, int data) {
 
 void sanchit_insert_at_end(struct node** head, int data) {
     struct node* new_node = (struct node*)malloc(sizeof(struct node));
-    new_node->data = data;
+    new_node->SAP = data;
 
     if(*head == NULL) {
         new_node->next = new_node;
@@ -58,7 +58,7 @@ void sanchit_insert_at_end(struct node** head, int data) {
     new_node->next = *head;
 }
 
-void sanchit_delete_at_beginning(struct node** head) {
+void delete_at_beginning(struct node** head) {
     if(*head == NULL) {
         printf("List is empty\n");
         return;
@@ -81,7 +81,7 @@ void sanchit_delete_at_beginning(struct node** head) {
     free(temp);
 }
 
-void sanchit_delete_at_end(struct node** head) {
+void delete_at_end(struct node** head) {
     if(*head == NULL) {
         printf("List is empty\n");
         return;
@@ -102,7 +102,7 @@ void sanchit_delete_at_end(struct node** head) {
     free(last);
 }
 
-int sanchit_count_nodes(struct node* head) {
+int count_nodes(struct node* head) {
     if(head == NULL) return 0;
 
     int count = 0;
@@ -124,10 +124,10 @@ int main() {
     sanchit_print(head);
     sanchit_insert_at_beginning(&head, 0);
     sanchit_print(head);
-    sanchit_delete_at_beginning(&head);
+    delete_at_beginning(&head);
     sanchit_print(head);
-    sanchit_delete_at_end(&head);
+    delete_at_end(&head);
     sanchit_print(head);
-    printf("Total nodes: %d\n", sanchit_count_nodes(head));
+    printf("Total nodes: %d\n", count_nodes(head));
     return 0;
 }

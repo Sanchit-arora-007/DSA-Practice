@@ -25,7 +25,7 @@ void sanchit_dequeue() {
     front++;
 }
 
-void sanchit_display() {
+void display() {
     if (front == -1 || front > rear) {
         printf("Queue is empty\n");
         return;
@@ -53,7 +53,7 @@ int main() {
                 sanchit_dequeue();
                 break;
             case 3:
-                sanchit_display();
+                display();
                 break;
             case 4:
                 return 0;

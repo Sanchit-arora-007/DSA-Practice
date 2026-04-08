@@ -1,12 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+int sap;
+char C;
+int countr=1;
 struct node{
     int SAP;
+    int room;
+    char c[100];
     struct node* next;
 };
 
-void sanchit_print(struct node* head){
+void print(struct node* head){
     struct node* temp = head;
     while(temp != NULL){
         printf("%d ", temp->SAP);
@@ -15,16 +19,26 @@ void sanchit_print(struct node* head){
     printf("\n");
 }
 
-void sanchit_insert_at_beginning(struct node** head, int data){
-    struct node* new_node = (struct node*)malloc(sizeof(struct node));
-    new_node->SAP = data;
-    new_node->next = *head;
-    *head = new_node;
+void insert_at_beginning(struct node** head, int SAP, int room, char c[100]){
+    if (SAP==sap) {
+        if (c == C) {
+            countr++;
+            return;
+        }
+    }
+    else {
+        struct node* new_node = (struct node*)malloc(sizeof(struct node));
+        new_node->SAP = SAP;
+        new_node->next = *head;
+        *head = new_node;
+        SAP = sap;
+        c = C;
+    }
 }
 
-void sanchit_insert_at_end(struct node** head, int data){
+void insert_at_end(struct node** head, int SAP, int room, char c[100]){
     struct node* new_node = (struct node*)malloc(sizeof(struct node));
-    new_node->SAP = data;
+    new_node->SAP = SAP;
     new_node->next = NULL;
     if(*head == NULL){
         *head = new_node;
@@ -36,9 +50,9 @@ void sanchit_insert_at_end(struct node** head, int data){
     }
     temp->next = new_node;
 }
-void insert_at_index(struct node** head, int index, int data){
+void insert_at_index(struct node** head, int index, int SAP, int room, char c[100]){
     struct node* new_node = (struct node*)malloc(sizeof(struct node));
-    new_node->SAP = data;
+    new_node->SAP = SAP;
     if(index == 0){
         new_node->next = *head;
         *head = new_node;
@@ -56,7 +70,7 @@ void insert_at_index(struct node** head, int index, int data){
     temp->next = new_node;
 
 }
-void sanchit_delete_at_beginning(struct node** head){
+void delete_at_beginning(struct node** head){
     if(*head == NULL){
         printf("List is empty\n");
         return;
@@ -66,7 +80,7 @@ void sanchit_delete_at_beginning(struct node** head){
     free(temp);
 
 }
-void sanchit_delete_at_end(struct node** head){
+void delete_at_end(struct node** head){
     if(*head == NULL){
         printf("List is empty\n");
         return;
@@ -84,7 +98,7 @@ void sanchit_delete_at_end(struct node** head){
     temp->next = NULL;
 
 }
-void sanchit_delete_at_index(struct node** head, int index){
+void delete_at_index(struct node** head, int index){
     if(*head == NULL){
         printf("List is empty\n");
         return;
@@ -109,7 +123,7 @@ void sanchit_delete_at_index(struct node** head, int index){
 
 }
 
-int sanchit_count_nodes(struct node* head) {
+int count_nodes(struct node* head) {
     int count = 0;
     struct node* temp = head;
     while(temp != NULL) {
@@ -121,20 +135,17 @@ int sanchit_count_nodes(struct node* head) {
 
 int main(){
     struct node* head = NULL;
-    sanchit_insert_at_end(&head, 1);
-    sanchit_insert_at_end(&head, 2);
-    sanchit_insert_at_end(&head, 3);
-    sanchit_print(head);
-    sanchit_insert_at_beginning(&head, 0);
-    sanchit_print(head);
-    insert_at_index(&head, 2, 5);
-    sanchit_print(head);
-    sanchit_delete_at_beginning(&head);
-    sanchit_print(head);
-    sanchit_delete_at_end(&head);
-    sanchit_print(head);
-    sanchit_delete_at_index(&head, 1);
-    printf(head);
-    printf("sanchit_count_nodes: %d\n", sanchit_count_nodes(head));
+
+    insert_at_end(&head, 5900, 511, 'Plumbing');
+    if (C == 'Electricity') {
+        insert_at_beginning(&head, 5100, 511, 'Electricity');
+    }
+    else {
+        insert_at_end(&head, 5200, 511, 'Wifi');
+    }
+    print(head);
+    insert_at_beginning(&head, 5100, 511, 'Electricity');
+    printf("Invalid Complaints: %d\n", countr);
+    printf("Valid Complaints: %d\n", count_nodes(head));
     return 0;
 }
